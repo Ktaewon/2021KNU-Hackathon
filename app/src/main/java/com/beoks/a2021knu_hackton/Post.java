@@ -9,7 +9,6 @@ public class Post implements Serializable {
     public String openChatLink;
     public int max_count;
     public String timeplace;
-
     public Post(String title, String content, String date, String openChatLink, int max_count, String timeplace) {
         this.title = title;
         this.content = content;

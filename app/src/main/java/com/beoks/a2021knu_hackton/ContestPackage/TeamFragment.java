@@ -1,8 +1,10 @@
 package com.beoks.a2021knu_hackton.ContestPackage;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -15,12 +17,16 @@ import android.widget.TextView;
 import com.beoks.a2021knu_hackton.Contest;
 import com.beoks.a2021knu_hackton.Post;
 import com.beoks.a2021knu_hackton.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+
+import static android.app.Activity.RESULT_OK;
 
 
 public class TeamFragment extends Fragment {
     Contest contest;
+    ViewGroup viewGroup;
     public TeamFragment(Contest contest) {
         // Required empty public constructor
         this.contest=contest;
@@ -30,11 +36,12 @@ public class TeamFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        ViewGroup viewGroup=(ViewGroup)inflater.inflate(R.layout.fragment_team, container, false);
+        viewGroup=(ViewGroup)inflater.inflate(R.layout.fragment_team, container, false);
         if(contest.post.size()!=0){
             ((TextView)viewGroup.findViewById(R.id.empty_textview)).setVisibility(View.GONE);
             setListView(viewGroup);
         }
+        setFloatingButton(viewGroup);
         return viewGroup;
     }
     void setListView(ViewGroup view){
@@ -73,8 +80,35 @@ public class TeamFragment extends Fragment {
                 view=layoutInflater.inflate(R.layout.team_view,null);
                 ((TextView)view.findViewById(R.id.team_title)).setText(posts.get(i).title);
                 ((TextView)view.findViewById(R.id.team_date)).setText(posts.get(i).date);
+                view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent=new Intent(getContext(),TeamInfoActivity.class);
+                        intent.putExtra("post",posts.get(i));
+                        startActivity(intent);
+                    }
+                });
             }
             return view;
+        }
+    }
+    void setFloatingButton(ViewGroup viewGroup){
+        ((FloatingActionButton)viewGroup.findViewById(R.id.floating_button)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getContext(),TeamCreateActivity.class);
+                startActivityForResult(intent,111);
+            }
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode,Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==111 && resultCode==RESULT_OK){
+            Post post=(Post)data.getSerializableExtra("post");
+            contest.post.add(post);
+            setListView(viewGroup);
         }
     }
 }
