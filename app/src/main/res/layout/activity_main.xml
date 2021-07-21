@@ -20,11 +20,11 @@
             android:layout_height="wrap_content">
 
 
-
             <FrameLayout
                 android:id="@+id/competiotion_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 app:layout_constraintBottom_toTopOf="@+id/study_layout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -36,10 +36,12 @@
 
                     <TextView
                         android:id="@+id/competiotion_textview"
-                        android:layout_width="146dp"
-                        android:layout_height="34dp"
-                        android:layout_marginTop="4dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
                         android:text="얼마남지 않은 공모전"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.06"
                         app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +67,8 @@
             <FrameLayout
                 android:id="@+id/study_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="160dp"
+                android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -77,10 +80,12 @@
 
                     <TextView
                         android:id="@+id/study_textview"
-                        android:layout_width="146dp"
-                        android:layout_height="34dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:text="스터디 모집중"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.06"
                         app:layout_constraintStart_toStartOf="parent"
@@ -95,8 +100,6 @@
                         app:layout_constraintTop_toBottomOf="@id/study_textview" />
 
 
-
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </FrameLayout>
 
@@ -104,6 +107,7 @@
                 android:id="@+id/icon_list_layout"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
+                android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toTopOf="@id/competiotion_layout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.4"
