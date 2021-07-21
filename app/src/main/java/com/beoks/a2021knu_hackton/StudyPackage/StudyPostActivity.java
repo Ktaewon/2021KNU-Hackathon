@@ -24,6 +24,7 @@ public class StudyPostActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent(getApplicationContext(), StudyReadActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
