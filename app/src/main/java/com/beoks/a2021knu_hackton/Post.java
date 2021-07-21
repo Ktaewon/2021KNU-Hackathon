@@ -5,17 +5,21 @@ import java.io.Serializable;
 public class Post implements Serializable {
     public String title;
     public String content;
+    public String writer;
     public String date;
     public String openChatLink;
     public int max_count;
     public String timeplace;
-    public Post(String title, String content, String date, String openChatLink, int max_count, String timeplace) {
+    public boolean isRecruit;
+    public Post(String title, String content, String date, String openChatLink, int max_count, String timeplace,String writer) {
         this.title = title;
         this.content = content;
         this.date = date;
         this.openChatLink = openChatLink;
         this.max_count = max_count;
         this.timeplace = timeplace;
+        this.writer=writer;
+        this.isRecruit=true;
     }
 
     public static Post getSample() {
@@ -24,6 +28,7 @@ public class Post implements Serializable {
                 "2021.07.19",
                 "https://open.kakao.com/ffff",
                 5,
-                "일주일에 2번 팀원들과 협의 후 결정, 쪽문 카페 등");
+                "일주일에 2번 팀원들과 협의 후 결정, 쪽문 카페 등",
+                "ljs");
     }
 }
