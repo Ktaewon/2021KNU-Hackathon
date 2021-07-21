@@ -21,7 +21,7 @@
         <activity android:name=".StudyPackage.MainStudyActivity"/>
         <activity android:name=".StudyPackage.LoginActivity"
             android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".StudyPackage.MainActivity">
+<!--        <activity android:name=".StudyPackage.MainStudyActivity">-->
         <activity android:name=".InfoBoard.InfoDataDescriptionActivity" />
         <activity android:name=".InfoBoard.InfoMainActivity" />
         <activity android:name=".MainActivity">

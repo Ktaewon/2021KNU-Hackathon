@@ -92,7 +92,7 @@ public class TeamFragment extends Fragment {
         }
     }
     void setFloatingButton(ViewGroup viewGroup){
-        ((FloatingActionButton)viewGroup.findViewById(R.id.study_post_button)).setOnClickListener(new View.OnClickListener() {
+        ((FloatingActionButton)viewGroup.findViewById(R.id.floating_button)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getContext(),TeamCreateActivity.class);

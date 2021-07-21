@@ -24,8 +24,7 @@ public class MainStudyActivity extends AppCompatActivity {
         ((Button)findViewById(R.id.main_study_back_button)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
     }

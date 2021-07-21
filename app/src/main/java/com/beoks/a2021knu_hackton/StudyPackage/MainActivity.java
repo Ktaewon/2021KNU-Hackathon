@@ -13,6 +13,7 @@ import com.beoks.a2021knu_hackton.Contest;
 import com.beoks.a2021knu_hackton.ContestPackage.ContestMainActivity;
 import com.beoks.a2021knu_hackton.InfoBoard.InfoMainActivity;
 import com.beoks.a2021knu_hackton.R;
+import com.beoks.a2021knu_hackton.StudyPackage.MainStudyActivity;
 
 /**
  * 공모전, 스터디 선택가능한 메인화면 액티비티
