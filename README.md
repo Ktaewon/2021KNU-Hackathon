@@ -10,6 +10,7 @@
 <img src="https://img.shields.io/badge/Database-Firebase Realtime Database-FFCA28?logo=Firebase&logoColor=white"/> 
 <img src="https://img.shields.io/badge/Login-Firebase authentication-FFCA28?logo=Firebase&logoColor=white"/> 
 <img src="https://img.shields.io/badge/Design-Figma-F24E1E?logo=Figma&logoColor=white"/>
+<img src="https://img.shields.io/badge/Project Management-Notion-F24E1E?logo=Notion&logoColor=white"/>
 
 ## Design
 Figma : https://www.figma.com/file/sUZlht2D1qvR3VfeyQAI2j/Hackerton?node-id=0%3A1
