@@ -15,7 +15,13 @@
         <activity android:name=".ContestPackage.TeamInfoActivity" />
         <activity android:name=".ContestPackage.ContestInformationActivity" />
         <activity android:name=".ContestPackage.ContestMainActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".StudyPackage.StudyReadActivity"/>
+        <activity android:name=".StudyPackage.StudyPostActivity"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".StudyPackage.MainStudyActivity"/>
+        <activity android:name=".StudyPackage.LoginActivity"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".StudyPackage.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
