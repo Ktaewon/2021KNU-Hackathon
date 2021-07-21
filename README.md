@@ -1,4 +1,4 @@
-﻿# 2021KNU-Hackton
+﻿# 2021KNU-Hackathon
 
 ### Tech Stack
 <img src="https://img.shields.io/badge/Android-3DDC84?logo=Android&logoColor=white"/> <img src="https://img.shields.io/badge/java-007396?logo=Java&logoColor=white"/> 
