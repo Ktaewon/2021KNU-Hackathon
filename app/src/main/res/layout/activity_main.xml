@@ -20,7 +20,12 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@color/theme"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
     <FrameLayout
@@ -36,19 +41,15 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="@color/theme"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/competiotion_textview"
                 android:layout_width="146dp"
-                android:layout_height="34dp"
-                android:layout_marginTop="4dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:text="얼마남지 않은 공모전"
+                android:textStyle="bold"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.06"
                 app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +65,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/competiotion_textview"
-                android:layout_margin="8dp">
+                android:layout_marginLeft="8dp">
 
             </LinearLayout>
 
@@ -87,9 +88,11 @@
             <TextView
                 android:id="@+id/study_textview"
                 android:layout_width="146dp"
-                android:layout_height="34dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="스터디 모집중"
+                android:textStyle="bold"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.06"
                 app:layout_constraintStart_toStartOf="parent"
@@ -101,79 +104,91 @@
     <FrameLayout
         android:id="@+id/icon_list_layout"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/competiotion_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title_text">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_margin="8dp"
+            app:cardCornerRadius="8dp"
+            android:layout_height="wrap_content">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <ImageButton
-                android:id="@+id/study_button"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="164dp"
-                android:layout_marginRight="164dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/comeptition_button"
-                app:layout_constraintRight_toLeftOf="@id/my_page_button"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+                <ImageButton
+                    android:id="@+id/study_button"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="164dp"
+                    android:layout_marginRight="164dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/comeptition_button"
+                    app:layout_constraintRight_toLeftOf="@id/my_page_button"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="@drawable/study" />
 
-            <TextView
-                android:id="@+id/competition_button_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:text="공모전"
-                app:layout_constraintLeft_toLeftOf="@id/comeptition_button"
-                app:layout_constraintTop_toBottomOf="@id/comeptition_button" />
+                <TextView
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:id="@+id/competition_button_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:text="공모전"
+                    app:layout_constraintLeft_toLeftOf="@id/comeptition_button"
+                    app:layout_constraintTop_toBottomOf="@id/comeptition_button" />
 
-            <ImageButton
-                android:id="@+id/comeptition_button"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/study_button"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+                <ImageButton
+                    android:id="@+id/comeptition_button"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/study_button"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="@drawable/contest" />
 
-            <TextView
-                android:id="@+id/study_button_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:text="스터디"
-                app:layout_constraintLeft_toLeftOf="@id/study_button"
-                app:layout_constraintTop_toBottomOf="@id/study_button" />
+                <TextView
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:id="@+id/study_button_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:text="스터디"
+                    app:layout_constraintLeft_toLeftOf="@id/study_button"
+                    app:layout_constraintTop_toBottomOf="@id/study_button" />
 
-            <ImageButton
-                android:id="@+id/my_page_button"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="44dp"
-                android:layout_marginRight="44dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+                <ImageButton
+                    android:id="@+id/my_page_button"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="44dp"
+                    android:layout_marginRight="44dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="@drawable/info_board" />
 
-            <TextView
-                android:id="@+id/my_page_button_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="마이페이지"
-                app:layout_constraintLeft_toLeftOf="@id/my_page_button"
-                app:layout_constraintTop_toBottomOf="@id/my_page_button" />
+                <TextView
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:id="@+id/my_page_button_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="마이페이지"
+                    app:layout_constraintLeft_toLeftOf="@id/my_page_button"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_button" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
     </FrameLayout>
 
     <TextView
