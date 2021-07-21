@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.beoks.a2021knu_hackton.ContestPackage.ContestMainActivity;
+import com.beoks.a2021knu_hackton.InfoBoard.InfoMainActivity;
 
 /**
  * 공모전, 스터디 선택가능한 메인화면 액티비티
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         contestTesting();
         setContestButton();
+        setMyPageButton();
     }
     void contestTesting(){
         LinearLayout linearLayout=(LinearLayout)findViewById(R.id.main_competition_layout);
@@ -33,6 +35,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getApplicationContext(), ContestMainActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+    void setMyPageButton(){
+        ((ImageButton)findViewById(R.id.my_page_button)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getApplicationContext(), InfoMainActivity.class);
                 startActivity(intent);
             }
         });

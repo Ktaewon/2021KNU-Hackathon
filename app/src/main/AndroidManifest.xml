@@ -11,10 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.2021KNUHackton">
-        <activity android:name=".ContestPackage.TeamCreateActivity"></activity>
+        <activity android:name=".ContestPackage.TeamCreateActivity" />
         <activity android:name=".ContestPackage.TeamInfoActivity" />
         <activity android:name=".ContestPackage.ContestInformationActivity" />
         <activity android:name=".ContestPackage.ContestMainActivity" />
+        <activity android:name=".InfoBoard.InfoDataDescriptionActivity" />
+        <activity android:name=".InfoBoard.InfoMainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
