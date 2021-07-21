@@ -16,7 +16,6 @@ public class StudyPostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_study_post);
         setPostStudyButton();
-        setStudyPostCancelButton();
     }
 
     void setPostStudyButton(){
@@ -30,13 +29,5 @@ public class StudyPostActivity extends AppCompatActivity {
     }
 
 
-    void setStudyPostCancelButton(){
-        ((Button)findViewById(R.id.study_post_cancel_button)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(), MainStudyActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
+
 }
