@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".StudyPackage.MainActivity">
 
     <FrameLayout
         android:id="@+id/competiotion_layout"
@@ -71,28 +71,6 @@
                 app:layout_constraintHorizontal_bias="0.06"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageButton
-                android:id="@+id/study_card1"
-                android:layout_width="98dp"
-                android:layout_height="93dp"
-                android:layout_marginTop="28dp"
-                android:layout_marginEnd="76dp"
-                android:layout_marginRight="76dp"
-                app:layout_constraintEnd_toStartOf="@+id/study_card2"
-                app:layout_constraintTop_toBottomOf="@+id/study_textview"
-                tools:srcCompat="@tools:sample/avatars" />
-
-            <ImageButton
-                android:id="@+id/study_card2"
-                android:layout_width="98dp"
-                android:layout_height="93dp"
-                android:layout_marginTop="28dp"
-                android:layout_marginEnd="64dp"
-                android:layout_marginRight="64dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/study_textview"
-                tools:srcCompat="@tools:sample/avatars" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
@@ -180,7 +158,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="한발낙지?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
