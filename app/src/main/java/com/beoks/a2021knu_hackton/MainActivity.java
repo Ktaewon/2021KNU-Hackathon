@@ -15,7 +15,7 @@ import com.beoks.a2021knu_hackton.ContestPackage.ContestMainActivity;
 import com.beoks.a2021knu_hackton.InfoBoard.InfoMainActivity;
 import com.beoks.a2021knu_hackton.R;
 import com.beoks.a2021knu_hackton.StudyPackage.MainStudyActivity;
-import com.beoks.a2021knu_hackton.StudyPackage.StudyListAdapter;
+//import com.beoks.a2021knu_hackton.StudyPackage.StudyListAdapter;
 
 /**
  * 공모전, 스터디 선택가능한 메인화면 액티비티
@@ -23,7 +23,7 @@ import com.beoks.a2021knu_hackton.StudyPackage.StudyListAdapter;
  */
 public class MainActivity extends AppCompatActivity {
     ListView listview ;
-    StudyListAdapter adapter;
+//    StudyListAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,15 +43,15 @@ public class MainActivity extends AppCompatActivity {
     void makeStudyListView(){
 
         // Adapter 생성
-        adapter = new StudyListAdapter() ;
-        // 리스트뷰 참조 및 Adapter달기
-        listview = (ListView) findViewById(R.id.main_page_studyview);
-        listview.setAdapter(adapter);
+//        adapter = new StudyListAdapter() ;
+//        // 리스트뷰 참조 및 Adapter달기
+//        listview = (ListView) findViewById(R.id.main_page_studyview);
+//        listview.setAdapter(adapter);
 
         // 임시 데이터 추가
-        adapter.addItem("코틀린 공부하실래요?","2021-7-23");
-        adapter.addItem("NodeJs, React로 웹서비스 공부해볼사람","2021-7-28");
-        System.out.println("...."+adapter.getCount());
+//        adapter.addItem("코틀린 공부하실래요?","2021-7-23");
+//        adapter.addItem("NodeJs, React로 웹서비스 공부해볼사람","2021-7-28");
+//        System.out.println("...."+adapter.getCount());
 
     }
     void setContestButton(){

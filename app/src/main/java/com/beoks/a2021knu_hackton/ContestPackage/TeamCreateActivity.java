@@ -31,7 +31,8 @@ public class TeamCreateActivity extends AppCompatActivity {
                         date.getYear()+"."+date.getMonth()+"."+date.getDay(),
                         ((EditText)findViewById(R.id.team_create_openchat)).getText().toString(),
                         Integer.parseInt(((EditText)findViewById(R.id.team_create_count)).getText().toString()),
-                        ((EditText)findViewById(R.id.team_create_timeplace)).getText().toString());
+                        ((EditText)findViewById(R.id.team_create_timeplace)).getText().toString(),
+                        TeamFragment.getUserName());
                 Intent intent=new Intent();
                 intent.putExtra("post",post);
                 setResult(RESULT_OK,intent);

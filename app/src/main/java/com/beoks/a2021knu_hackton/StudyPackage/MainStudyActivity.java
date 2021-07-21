@@ -26,18 +26,18 @@ public class MainStudyActivity extends AppCompatActivity {
 
     void makeStudyListView(){
         ListView listview ;
-        StudyListAdapter adapter;
-        // Adapter 생성
-        adapter = new StudyListAdapter() ;
-
-        // 리스트뷰 참조 및 Adapter달기
-        listview = (ListView) findViewById(R.id.study_list);
-        listview.setAdapter(adapter);
-
-        // 임시 데이터 추가
-        adapter.addItem("코틀린 공부하실래요?","2021-7-23");
-        adapter.addItem("NodeJs, React로 웹서비스 공부해볼사람","2021-7-28");
-        adapter.addItem("AI 및 빅데이터 스터디 팀원모집","2021-7-30");
+//        StudyListAdapter adapter;
+//        // Adapter 생성
+//        adapter = new StudyListAdapter() ;
+//
+//        // 리스트뷰 참조 및 Adapter달기
+//        listview = (ListView) findViewById(R.id.study_list);
+//        listview.setAdapter(adapter);
+//
+//        // 임시 데이터 추가
+//        adapter.addItem("코틀린 공부하실래요?","2021-7-23");
+//        adapter.addItem("NodeJs, React로 웹서비스 공부해볼사람","2021-7-28");
+//        adapter.addItem("AI 및 빅데이터 스터디 팀원모집","2021-7-30");
 
     }
 
