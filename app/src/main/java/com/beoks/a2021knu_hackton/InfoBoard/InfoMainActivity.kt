@@ -24,6 +24,7 @@ class InfoMainActivity : AppCompatActivity() {
         infoBoardData
         setListView()
         setButton()
+        setTitle("정보 게시판")
     }
 
     //get sample data

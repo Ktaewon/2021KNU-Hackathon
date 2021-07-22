@@ -27,6 +27,7 @@ public class ContestMainActivity extends AppCompatActivity {
     private void init(){
         //TODO get contest from firebase database
         //test
+        setTitle("공모전");
         contestArrayList=new ArrayList<Contest>();
         contestArrayList.add(Contest.getSample());
         contestArrayList.add(Contest.getSample());
