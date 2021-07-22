@@ -34,7 +34,8 @@ class InfoWriteActivity : AppCompatActivity() {
             var infoData=InfoData(title=title_editText!!.text.toString(),
                 date=(date.year+1900).toString()+"."+(date.month+1)+"."+date.date.toString(),
                 content = descriptionEditText!!.text.toString(),
-                type = items[spinner!!.selectedItemPosition],writer = openChatEditText!!.text.toString())
+                type = items[spinner!!.selectedItemPosition],
+                    writer = "writer")
 
             var intent=Intent()
             intent.putExtra("infoData",infoData)

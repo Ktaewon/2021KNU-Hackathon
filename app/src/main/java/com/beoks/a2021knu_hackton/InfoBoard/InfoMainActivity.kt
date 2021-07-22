@@ -15,6 +15,7 @@ import com.beoks.a2021knu_hackton.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class InfoMainActivity : AppCompatActivity() {
+    var adapter : InfoAdapter?=null
     var infoDataArrayList : ArrayList<InfoData?>? =null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +30,8 @@ class InfoMainActivity : AppCompatActivity() {
         getDataFromFB(object : InfoData.Companion.Listener {
             override fun onGetDataListener(infoDataArrayList1: java.util.ArrayList<InfoData?>) {
                 infoDataArrayList=infoDataArrayList1
-                (findViewById<ListView>(R.id.info_main_listview)).adapter=InfoAdapter(applicationContext)
+                adapter=InfoAdapter(applicationContext)
+                (findViewById<ListView>(R.id.info_main_listview)).adapter=adapter
             }
         })
     }
@@ -46,11 +48,11 @@ class InfoMainActivity : AppCompatActivity() {
         if(requestCode==111){
             if (resultCode== RESULT_OK){
                 infoDataArrayList!!.add(data!!.getSerializableExtra("infoData") as InfoData)
-                (findViewById<ListView>(R.id.info_main_listview)).adapter=InfoAdapter(applicationContext)
+                adapter!!.notifyDataSetChanged()
             }
         }
     }
-    internal inner class InfoAdapter(context: Context?) : BaseAdapter() {
+    inner class InfoAdapter(context: Context?) : BaseAdapter() {
         var inflater: LayoutInflater
 
         override fun getCount(): Int {
@@ -67,16 +69,14 @@ class InfoMainActivity : AppCompatActivity() {
 
         override fun getView(i: Int, view: View?, viewGroup: ViewGroup?): View {
             var view = view
-            if (view == null) {
-                view = inflater.inflate(R.layout.info_main_list_content, null)
-                (view.findViewById<View>(R.id.info_main_list_content_title) as TextView).text = infoDataArrayList!![i]!!.title
-                (view.findViewById<View>(R.id.info_main_list_content_kind) as TextView).text = infoDataArrayList!![i]!!.type
-                (view.findViewById<View>(R.id.info_main_list_content_date) as TextView).text = infoDataArrayList!![i]!!.date
-                view.setOnClickListener {
-                    val intent = Intent(applicationContext, InfoDataDescriptionActivity::class.java)
-                    intent.putExtra("InfoData", infoDataArrayList!![i])
-                    startActivity(intent)
-                }
+            view = inflater.inflate(R.layout.info_main_list_content, null)
+            (view.findViewById<View>(R.id.info_main_list_content_title) as TextView).text = infoDataArrayList!![i]!!.title
+            (view.findViewById<View>(R.id.info_main_list_content_kind) as TextView).text = infoDataArrayList!![i]!!.type
+            (view.findViewById<View>(R.id.info_main_list_content_date) as TextView).text = infoDataArrayList!![i]!!.date
+            view.setOnClickListener {
+                val intent = Intent(applicationContext, InfoDataDescriptionActivity::class.java)
+                intent.putExtra("InfoData", infoDataArrayList!![i])
+                startActivity(intent)
             }
             return view!!
         }
