@@ -1,21 +1,23 @@
 package com.beoks.a2021knu_hackton;
 
 import java.io.Serializable;
-
 public class Post implements Serializable {
     public String title;
     public String content;
     public String writer;
     public String date;
-    public String openChatLink;
+    public String link;
     public int max_count;
     public String timeplace;
     public boolean isRecruit;
-    public Post(String title, String content, String date, String openChatLink, int max_count, String timeplace,String writer) {
+    public Post(){
+
+    }
+    public Post(String title, String content, String date, String link, int max_count, String timeplace, String writer) {
         this.title = title;
         this.content = content;
         this.date = date;
-        this.openChatLink = openChatLink;
+        this.link = link;
         this.max_count = max_count;
         this.timeplace = timeplace;
         this.writer=writer;

@@ -13,12 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.beoks.a2021knu_hackton.ContestPackage.ContestInformationActivity;
-import com.beoks.a2021knu_hackton.ContestPackage.ContestMainActivity;
-
-import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class CardView extends LinearLayout {
     private Contest contest;
@@ -48,7 +42,7 @@ public class CardView extends LinearLayout {
         ImageView imageView=(ImageView)findViewById(R.id.content_image);
         imageView.setImageBitmap(contest.getImage());
         TextView textView=(TextView)findViewById(R.id.content_title);
-        textView.setText(contest.title);
+        textView.setText(contest.contest_title);
         TextView textView1=(TextView)findViewById(R.id.content_view_count);
         textView1.setText(contest.viewCount+"");
         setClick();

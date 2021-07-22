@@ -1,13 +1,16 @@
 package com.beoks.a2021knu_hackton;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.beoks.a2021knu_hackton.CardView;
 import com.beoks.a2021knu_hackton.Contest;
@@ -16,6 +19,15 @@ import com.beoks.a2021knu_hackton.InfoBoard.InfoMainActivity;
 import com.beoks.a2021knu_hackton.R;
 import com.beoks.a2021knu_hackton.StudyPackage.MainStudyActivity;
 import com.beoks.a2021knu_hackton.StudyPackage.StudyListAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
 //import com.beoks.a2021knu_hackton.StudyPackage.StudyListAdapter;
 
 /**
@@ -28,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        init();
+    }
+    void init(){
         setContentView(R.layout.activity_main);
         contestTesting();
         setContestButton();
@@ -37,8 +52,14 @@ public class MainActivity extends AppCompatActivity {
     }
     void contestTesting(){
         LinearLayout linearLayout=(LinearLayout)findViewById(R.id.main_competition_layout);
-        linearLayout.addView(new CardView(getApplicationContext(), Contest.getSample()));
-        linearLayout.addView(new CardView(getApplicationContext(), Contest.getSample()));
+        Contest.getContestsFromFB(new Contest.Listener() {
+            @Override
+            public void onDataGetListener(ArrayList<Contest> contests) {
+                ((ProgressBar)findViewById(R.id.progressBar)).setVisibility(View.GONE);
+                linearLayout.addView(new CardView(getApplicationContext(), contests.get(0)));
+                linearLayout.addView(new CardView(getApplicationContext(), contests.get(1)));
+            }
+        });
     }
 
     void makeStudyListView(){

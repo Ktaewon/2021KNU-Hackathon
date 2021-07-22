@@ -1,6 +1,5 @@
 package com.beoks.a2021knu_hackton.ContestPackage;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
@@ -33,7 +32,7 @@ public class ContestInformationActivity extends FragmentActivity {
     }
     void initHead(){
         ((ImageView)findViewById(R.id.contest_info_image)).setImageBitmap(contest.getImage());
-        ((TextView)findViewById(R.id.contest_info_title)).setText(contest.title);
+        ((TextView)findViewById(R.id.contest_info_title)).setText(contest.contest_title);
         ((TextView)findViewById(R.id.content_info_view_count)).setText(contest.viewCount+"");
         setDate();
 

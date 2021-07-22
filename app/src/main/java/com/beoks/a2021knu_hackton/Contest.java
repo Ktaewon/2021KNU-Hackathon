@@ -4,7 +4,19 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.IgnoreExtraProperties;
+import com.google.firebase.database.ValueEventListener;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,26 +27,62 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 
 /**
  * 공모전 클래스
  */
 public class Contest implements Serializable {
-    public String title;
-    public String imageUrl;
+    public String contest_title;
+    public String poster;
     public String end_date;
     public String content;
     public int viewCount;
-    public ArrayList<Post> post;
+    public List<Post> post;
+    public String start_date;
+    public Contest(){
 
-    public Contest(String title, String imageUrl, int viewCount,String end_date,String content) {
-        this.title = title;
-        this.imageUrl = imageUrl;
+    }
+    public Contest(String contest_title, String poster, int viewCount, String end_date, String content) {
+        this.contest_title = contest_title;
+        this.poster = poster;
         this.viewCount = viewCount;
         this.end_date=end_date;
         this.content=content;
         this.post=new ArrayList<Post>();
+    }
+    public interface Listener{
+        void onDataGetListener(ArrayList<Contest> contests);
+    }
+    public static ArrayList<Contest> getContestsFromFB(final Listener listener){
+
+        ArrayList<Contest> arrayList=new ArrayList<Contest>();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("contest_list");
+        myRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
+                if(task.isSuccessful()){
+                    for(DataSnapshot dataSnapshot:task.getResult().getChildren()){
+                        arrayList.add(dataSnapshot.getValue(Contest.class));
+                    }
+                    listener.onDataGetListener(arrayList);
+                    Log.d("firebase_contest","Success");
+                }
+                else{
+                    Log.d("firebase_contest","fail");
+                }
+            }
+        });
+
+        try {
+            Thread.sleep(100);
+        } catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        return arrayList;
     }
     public static Contest getSample(){
         Contest contest= new Contest("2021 오픈소스 컨트리뷰톤 아카데미",
@@ -110,7 +158,7 @@ public class Contest implements Serializable {
     public Bitmap getImage(){
         DownloadImageFromURI downloadImageFromURI=new DownloadImageFromURI();
         try {
-            return downloadImageFromURI.execute(imageUrl).get();
+            return downloadImageFromURI.execute(poster).get();
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -131,6 +179,21 @@ public class Contest implements Serializable {
             e.printStackTrace();
             return -100;
         }
+    }
+
+}
+class User {
+
+    public String username;
+    public String email;
+
+    public User() {
+        // Default constructor required for calls to DataSnapshot.getValue(User.class)
+    }
+
+    public User(String username, String email) {
+        this.username = username;
+        this.email = email;
     }
 
 }

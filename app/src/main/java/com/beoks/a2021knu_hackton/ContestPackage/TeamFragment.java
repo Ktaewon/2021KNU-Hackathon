@@ -21,6 +21,7 @@ import com.beoks.a2021knu_hackton.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -53,10 +54,10 @@ public class TeamFragment extends Fragment {
 
     }
     class TeamAdapter extends BaseAdapter{
-        ArrayList<Post> posts;
+        List<Post> posts;
         Context context;
         LayoutInflater layoutInflater;
-        public TeamAdapter(Context context, ArrayList<Post> posts){
+        public TeamAdapter(Context context, List<Post> posts){
             this.posts=posts;
             this.context=context;
             this.layoutInflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

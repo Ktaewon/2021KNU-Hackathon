@@ -28,15 +28,23 @@ public class ContestMainActivity extends AppCompatActivity {
         //TODO get contest from firebase database
         //test
         setTitle("공모전");
-        contestArrayList=new ArrayList<Contest>();
-        contestArrayList.add(Contest.getSample());
-        contestArrayList.add(Contest.getSample());
-        contestArrayList.add(Contest.getSample());
-        contestArrayList.add(Contest.getSample());
-        contestArrayList.add(Contest.getSample());
-        ContestAdapter contestAdapter=new ContestAdapter(getApplicationContext(),contestArrayList);
-        GridView gridView=(GridView)findViewById(R.id.contest_main_gridview);
-        gridView.setAdapter(contestAdapter);
+//        contestArrayList=new ArrayList<Contest>();
+//        contestArrayList.add(Contest.getSample());
+//        contestArrayList.add(Contest.getSample());
+//        contestArrayList.add(Contest.getSample());
+//        contestArrayList.add(Contest.getSample());
+//        contestArrayList.add(Contest.getSample());
+//        ContestAdapter contestAdapter=new ContestAdapter(getApplicationContext(),contestArrayList);
+//        GridView gridView=(GridView)findViewById(R.id.contest_main_gridview);
+//        gridView.setAdapter(contestAdapter);
+        Contest.getContestsFromFB(new Contest.Listener() {
+            @Override
+            public void onDataGetListener(ArrayList<Contest> contests) {
+                ContestAdapter contestAdapter=new ContestAdapter(getApplicationContext(),contests);
+                GridView gridView=(GridView)findViewById(R.id.contest_main_gridview);
+                gridView.setAdapter(contestAdapter);
+            }
+        });
     }
 }
 class ContestAdapter extends BaseAdapter{

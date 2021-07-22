@@ -27,14 +27,15 @@ public class TeamInfoActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.team_info_member)).setText(post.max_count+"명");
         ((TextView)findViewById(R.id.team_info_timeplace)).setText(post.timeplace);
         ((TextView)findViewById(R.id.team_info_content)).setText(post.content);
-        ((TextView)findViewById(R.id.team_info_openchat)).setText(post.openChatLink);
+        ((TextView)findViewById(R.id.team_info_openchat)).setText(post.link);
         String userName=getIntent().getStringExtra("userName");
 
         Button recruit_button=(Button)findViewById(R.id.team_info_recruit_button);
         Button delete_button=(Button)findViewById(R.id.team_info_delete_button);
         Button revise_button=(Button)findViewById(R.id.team_info_revise);
 
-        if(userName.equals(post.writer)){
+//      if(userName.equals(post.writer)){
+        if(true){
             recruit_button.setText(post.isRecruit?"모집 종료":"모집 시작");
             recruit_button.setVisibility(View.VISIBLE);
             recruit_button.setOnClickListener(new View.OnClickListener() {
