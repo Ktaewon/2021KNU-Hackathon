@@ -29,12 +29,12 @@ class InfoDataDescriptionActivity : AppCompatActivity() {
         val layoutInflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view = layoutInflater.inflate(R.layout.info_main_list_content, null)
         (view.findViewById<View>(R.id.info_main_list_content_title) as TextView).text = infoData!!.title
-        (view.findViewById<View>(R.id.info_main_list_content_kind) as TextView).text = infoData!!.kind
+        (view.findViewById<View>(R.id.info_main_list_content_kind) as TextView).text = infoData!!.type
         (view.findViewById<View>(R.id.info_main_list_content_date) as TextView).text = infoData!!.date
         (findViewById<View>(R.id.info_description_content_layout) as LinearLayout).addView(view)
     }
 
     fun setDescription() {
-        (findViewById<View>(R.id.info_description_content) as TextView).text = infoData!!.description
+        (findViewById<View>(R.id.info_description_content) as TextView).text = infoData!!.content
     }
 }

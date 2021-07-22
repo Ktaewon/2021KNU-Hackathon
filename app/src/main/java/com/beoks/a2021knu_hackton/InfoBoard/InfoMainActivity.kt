@@ -10,36 +10,28 @@ import android.widget.BaseAdapter
 import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.beoks.a2021knu_hackton.InfoBoard.InfoData.Companion.sample
+import com.beoks.a2021knu_hackton.InfoBoard.InfoData.Companion.getDataFromFB
 import com.beoks.a2021knu_hackton.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import java.util.*
 
 class InfoMainActivity : AppCompatActivity() {
-
-    var infoDataArrayList: ArrayList<InfoData>? = null
+    var infoDataArrayList : ArrayList<InfoData?>? =null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info_main)
-        infoBoardData
-        setListView()
+        getInfoData()
         setButton()
         setTitle("정보 게시판")
     }
 
-    //get sample data
-    val infoBoardData: Unit
-        get() {
-            //get sample data
-            infoDataArrayList = ArrayList()
-            infoDataArrayList!!.add(sample)
-            infoDataArrayList!!.add(sample)
-            infoDataArrayList!!.add(sample)
-            infoDataArrayList!!.add(sample)
-        }
 
-    fun setListView() {
-        (findViewById<View>(R.id.info_main_listview) as ListView).adapter = InfoAdapter(applicationContext)
+    fun getInfoData() {
+        getDataFromFB(object : InfoData.Companion.Listener {
+            override fun onGetDataListener(infoDataArrayList1: java.util.ArrayList<InfoData?>) {
+                infoDataArrayList=infoDataArrayList1
+                (findViewById<ListView>(R.id.info_main_listview)).adapter=InfoAdapter(applicationContext)
+            }
+        })
     }
     fun setButton(){
         var button=findViewById<FloatingActionButton>(R.id.floating_button);
@@ -54,18 +46,19 @@ class InfoMainActivity : AppCompatActivity() {
         if(requestCode==111){
             if (resultCode== RESULT_OK){
                 infoDataArrayList!!.add(data!!.getSerializableExtra("infoData") as InfoData)
-                setListView()
+                (findViewById<ListView>(R.id.info_main_listview)).adapter=InfoAdapter(applicationContext)
             }
         }
     }
     internal inner class InfoAdapter(context: Context?) : BaseAdapter() {
         var inflater: LayoutInflater
+
         override fun getCount(): Int {
             return infoDataArrayList!!.size
         }
 
         override fun getItem(i: Int): Any {
-            return infoDataArrayList!![i]
+            return infoDataArrayList!![i]!!
         }
 
         override fun getItemId(i: Int): Long {
@@ -76,9 +69,9 @@ class InfoMainActivity : AppCompatActivity() {
             var view = view
             if (view == null) {
                 view = inflater.inflate(R.layout.info_main_list_content, null)
-                (view.findViewById<View>(R.id.info_main_list_content_title) as TextView).text = infoDataArrayList!![i].title
-                (view.findViewById<View>(R.id.info_main_list_content_kind) as TextView).text = infoDataArrayList!![i].kind
-                (view.findViewById<View>(R.id.info_main_list_content_date) as TextView).text = infoDataArrayList!![i].date
+                (view.findViewById<View>(R.id.info_main_list_content_title) as TextView).text = infoDataArrayList!![i]!!.title
+                (view.findViewById<View>(R.id.info_main_list_content_kind) as TextView).text = infoDataArrayList!![i]!!.type
+                (view.findViewById<View>(R.id.info_main_list_content_date) as TextView).text = infoDataArrayList!![i]!!.date
                 view.setOnClickListener {
                     val intent = Intent(applicationContext, InfoDataDescriptionActivity::class.java)
                     intent.putExtra("InfoData", infoDataArrayList!![i])

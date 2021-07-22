@@ -33,8 +33,8 @@ class InfoWriteActivity : AppCompatActivity() {
             val date=Date();
             var infoData=InfoData(title=title_editText!!.text.toString(),
                 date=(date.year+1900).toString()+"."+(date.month+1)+"."+date.date.toString(),
-                description = descriptionEditText!!.text.toString(),
-                kind = items[spinner!!.selectedItemPosition],openChat = openChatEditText!!.text.toString())
+                content = descriptionEditText!!.text.toString(),
+                type = items[spinner!!.selectedItemPosition],writer = openChatEditText!!.text.toString())
 
             var intent=Intent()
             intent.putExtra("infoData",infoData)
