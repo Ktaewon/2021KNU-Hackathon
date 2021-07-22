@@ -28,7 +28,7 @@ public class TeamCreateActivity extends AppCompatActivity {
                 Date date=new Date();
                 post=new Post(((EditText)findViewById(R.id.team_create_title)).getText().toString(),
                         ((EditText)findViewById(R.id.team_create_contents)).getText().toString(),
-                        date.getYear()+"."+date.getMonth()+"."+date.getDay(),
+                        (date.getYear()+1900)+"."+(date.getMonth()+1)+"."+date.getDate(),
                         ((EditText)findViewById(R.id.team_create_openchat)).getText().toString(),
                         Integer.parseInt(((EditText)findViewById(R.id.team_create_count)).getText().toString()),
                         ((EditText)findViewById(R.id.team_create_timeplace)).getText().toString(),

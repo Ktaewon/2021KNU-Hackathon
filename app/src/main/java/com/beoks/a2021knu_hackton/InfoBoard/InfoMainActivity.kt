@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.beoks.a2021knu_hackton.InfoBoard.InfoData.Companion.sample
 import com.beoks.a2021knu_hackton.R
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.util.*
 
 class InfoMainActivity : AppCompatActivity() {
@@ -22,6 +23,7 @@ class InfoMainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_info_main)
         infoBoardData
         setListView()
+        setButton()
     }
 
     //get sample data
@@ -38,7 +40,23 @@ class InfoMainActivity : AppCompatActivity() {
     fun setListView() {
         (findViewById<View>(R.id.info_main_listview) as ListView).adapter = InfoAdapter(applicationContext)
     }
+    fun setButton(){
+        var button=findViewById<FloatingActionButton>(R.id.floating_button);
+        button.setOnClickListener(View.OnClickListener {
+            var intent=Intent(applicationContext,InfoWriteActivity::class.java);
+            startActivityForResult(intent,111)
+        })
+    }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode==111){
+            if (resultCode== RESULT_OK){
+                infoDataArrayList!!.add(data!!.getSerializableExtra("infoData") as InfoData)
+                setListView()
+            }
+        }
+    }
     internal inner class InfoAdapter(context: Context?) : BaseAdapter() {
         var inflater: LayoutInflater
         override fun getCount(): Int {
